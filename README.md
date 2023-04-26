@@ -9,7 +9,6 @@ depois verifique se tem instalado o NodeJs, caso não saiba abra o terminal e ro
 segue o link para baixar: https://nodejs.org/en
 
 agora uma pasta onde achar melhor, e abra o terminal nesse caminho que escolheu, para rodar o comando "git clone https://github.com/HALFFEX/barbearia-qcorte-app.git"
-
 após isso os arquivos serão baixados 
 
 <h2>Iniciando o projeto</h2>
