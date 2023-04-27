@@ -19,4 +19,7 @@ Dentro da pasta do projeto!!!
 rode "npm install" - para instalar as dependências 
 
 <h2>Segundo comando</h2>
-"expo install" - para instalar a dependência para rodar o Expo
+"npx expo install" - para instalar a dependência para rodar o Expo
+
+<h2>Terceiro comando</h2>
+"npm expo start" - para abrir o expo, emulador ou pelo celular com o app "Expo go" tem na PlayStore e na AppStore
