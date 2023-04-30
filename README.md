@@ -22,4 +22,4 @@ rode "npm install" - para instalar as dependências
 "npx expo install" - para instalar a dependência para rodar o Expo
 
 <h2>Terceiro comando</h2>
-"npm expo start" - para abrir o expo, emulador ou pelo celular com o app "Expo go" tem na PlayStore e na AppStore
+"npx expo start" - para abrir o expo, emulador ou pelo celular com o app "Expo go" tem na PlayStore e na AppStore
