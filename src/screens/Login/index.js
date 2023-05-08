@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   backgroundLogo: {
     backgroundColor: '#CC6600',
-    borderRadius: '100%',
+    borderRadius: 100,
     width: 130,
     height: 130,
   },
