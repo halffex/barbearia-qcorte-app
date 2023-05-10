@@ -1,53 +1,185 @@
-import React from 'react';
-import Input from '../../components/Input';
-import Button from '../../components/button';
-import { 
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity
-} from 'react-native';
-
-const Cadastro = () => {
-
-    return(
-
-        <View style = {styles.container}>
-
-            <View style = {styles.containerPerfil}>
-
-                <Text>Selecione seu perfil</Text>
-
-            </View>
-
-            <View style = {styles.selecao}>
-
-                <button style = {styles.user}>Sou cliente</button>
-                <button style = {styles.barber}>Sou barbeiro</button>
-
-            </View>
-            <View style={styles.facaCadastro}>
-            <Text style={styles.criarConta}>
-                Ja possui uma conta?
-                <TouchableOpacity>
-                <Text 
-                    style={styles.textBold}>Faça login</Text>
-                </TouchableOpacity>
-            </Text>
-            </View>
-
-            <Button />
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
+const Cadastro = ({navigation}) => {
+
+  const voltar = () => {
+    console.log("voltou"),
+    navigation.reset({
+      index: 0,
+      routes: [{name: "Login"}]
+    });
+  };
+
+  const [colors, setColors] = useState({
+    card1: '#6A441E',
+    card2: '#6A441E'
+  });
+
+  const handleCard1Press = () => {
+    if(colors.card1 !== '#CC6600') {
+      setColors({
+        card1: '#CC6600',
+        card2: '#6A441E'
+      });
+    } else {
+      setColors({
+        card1: '#6A441E',
+        card2: '#6A441E'
+      });
+    }
+  };
+
+  const handleCard2Press = () => {
+    if (colors.card2 !== '#CC6600') {
+      setColors({
+        card1: '#6A441E',
+        card2: '#CC6600'
+      });
+    } else {
+      setColors({
+        card1: '#6A441E',
+        card2: '#6A441E'
+      });
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      
+      <View style={styles.centeredView}>
+        <View style={styles.selecione}>
+          <Text style={styles.text}>Selecione um Perfil</Text>
+          <View style={styles.barra}></View>
         </View>
-    );
+
+        <View style={styles.cards}>
+          <TouchableOpacity 
+            style={[styles.card, { backgroundColor: colors.card1 }]}
+            onPress={handleCard1Press}
+          >
+            <Text style={styles.textSelect}>Sou cliente</Text>
+            
+            <Icon 
+              name={"account"} 
+              size={40} 
+              color={'#fff'} 
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={[styles.card, { backgroundColor: colors.card2 }]}
+            onPress={handleCard2Press}
+          >
+            <Text style={styles.textSelect}>Sou barbeiro</Text>
+
+            <Icon 
+              name={"email"} 
+              size={35} 
+              color={'#fff'} 
+              style={styles.icon}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.facaLogin}>
+          <Text style={styles.possuiConta}> Já possui uma conta?</Text> 
+          <TouchableOpacity onPress={() => voltar()}>
+            <Text style={styles.textBold}>Faça login</Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity 
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Continuar</Text>
+        </TouchableOpacity>
+
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container:{
-
-    }
-})
+  container: {
+    flex: 1,
+    backgroundColor: '#3D2A17',
+  },
+  centeredView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  selecione: {
+    marginBottom: 70,
+    marginTop: 80,
+  },
+  text: {
+    textAlign: 'center', 
+    color: 'white', 
+    fontSize: 20, 
+    fontWeight: 'bold'
+  },
+  barra: {
+    height: 3,
+    width: 220,
+    borderRadius: 100,
+    backgroundColor: '#CC6600'
+  },
+  cards: {
+    top: 40,
+    gap: 25,
+  },
+  card: {
+    justifyContent: 'center',
+    width: 350,
+    height: 120, 
+    borderRadius: 5,
+  },
+  textSelect: {
+    textAlign: 'center', 
+    color: 'white', 
+    fontSize: 20, 
+    fontWeight: 'bold'
+  },
+  icon: {
+    position: 'absolute',
+    justifyContent: 'center',
+    left: 30,
+  },
+  facaLogin: {
+    top: 70,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }, 
+  possuiConta: {
+    color: "#fff",
+    fontSize: 15,
+  },
+  textBold: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#CC6600',
+    left: 5,
+  },
+  button: {
+    backgroundColor: '#CC6600',
+    width: 349,
+    height: 50,
+    justifyContent: 'center',
+    top: 200,
+    borderRadius: 5,
+  },
+  buttonText: {
+    textAlign: 'center',
+    borderRadius: 5,
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+});
 
 export default Cadastro;

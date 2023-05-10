@@ -11,7 +11,7 @@ export default function App() {
     </>*/
 
     <NavigationContainer>
-      <StatusBar backgroundColor= "#CC6600" barStyle="ligth-content" />
+      <StatusBar style="ligth" />
       <Routes/>
     </NavigationContainer>
 
