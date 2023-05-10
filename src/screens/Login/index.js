@@ -1,27 +1,32 @@
-import { React, useState } from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
-
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import Input from '../../components/Input';
-import Button from '../../components/button';
 
-const Login = () => {
-  const [email, setEmail] = useState("");
+const Login = ({navigation}) => {
+
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+
+  const entrar = () => {
+    console.log("entrou")
+    navigation.reset({
+      index: 0,
+      routes: [{name: "Cadastro"}]
+    });
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.centeredView}>
         <View style={styles.backgroundLogo}>
-          <Image 
-            style={styles.logo}
-            // source={require('/src/images/logo.png')}
-          />
+          
         </View>
         <Input 
           iconName={"email"} 
           placeholder="E-mail"
           autoCapitalize="none"
-          onChangeText={setEmail}
+          onChangeText={value => setEmail(value)}
           autoCorrect={false}
           keyboardType="email-address"
         />
@@ -29,6 +34,7 @@ const Login = () => {
           iconName={"key-variant"} 
           secureTextEntry 
           autoCorrect={false}
+          onChangeText={value => setPassword(value)}
           placeholder="Senha"
           autoCapitalize="none"
           keyboardType="default"
@@ -37,16 +43,17 @@ const Login = () => {
           <Text style={styles.esqueceu}>Esqueceu a senha?</Text>
         </TouchableOpacity>
 
-        <Button />
+        <TouchableOpacity 
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
 
         <View style={styles.facaCadastro}>
-          <Text style={styles.criarConta}>
-            Não possui conta? 
-            <TouchableOpacity>
-              <Text 
-                style={styles.textBold}>Faça seu cadastro</Text>
-            </TouchableOpacity>
-          </Text>
+          <Text style={styles.criarConta}>Não possui conta?</Text>
+          <TouchableOpacity onPress={() => entrar()}>
+            <Text style={styles.textBold}>Faça seu cadastro</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -82,24 +89,36 @@ const styles = StyleSheet.create({
     width: 130,
   },
   facaCadastro: {
-    flex: 1,
+    top: 280,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    top: 320,
   },  
   criarConta: {
     color: "#fff",
-    position: 'absolute',
-    textAlign: 'center',
     fontSize: 15,
   },
   textBold: {
     fontSize: 15,
     fontWeight: 'bold',
-    left: 7,
-    top: 3,
-    color: '#CC6600'
-  }
+    color: '#CC6600',
+    left: 5,
+  },
+  button: {
+    backgroundColor: '#CC6600',
+    width: 354,
+    height: 50,
+    justifyContent: 'center',
+    top: 200,
+    borderRadius: 5,
+  },
+  buttonText: {
+    textAlign: 'center',
+    borderRadius: 5,
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
 });
 
 export default Login;
