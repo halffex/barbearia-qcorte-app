@@ -36,7 +36,7 @@ const Input = (props) => {
 
 const styles = StyleSheet.create({
   formsContainer: {
-    top: 120,
+    top: '30%',
     flexDirection: 'row',
     marginTop: 15,
   },
@@ -45,10 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 60,
     marginHorizontal: 30,
-    borderRadius: 5,
     fontSize: 14,
-    borderColor: '#CC6600',
-    borderWidth: 1,
+    borderBottomColor: '#CC6600',
+    borderBottomWidth: 2,
     color: '#fff',
   },
   icon: {

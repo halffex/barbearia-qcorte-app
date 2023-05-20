@@ -18,6 +18,7 @@ const Login = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      
       <View style={styles.centeredView}>
         <View style={styles.backgroundLogo}>
           
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3D2A17',
   },
   centeredView: {
-    top: 140,
+    top: '10%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -84,12 +85,26 @@ const styles = StyleSheet.create({
   },
   esqueceu: {
     color: '#fff',
-    top: 130,
+    top: '800%',
     left: 115,
-    width: 130,
+  },
+  button: {
+    backgroundColor: '#CC6600',
+    width: '85%',
+    height: 50,
+    justifyContent: 'center',
+    top: '50%',
+    borderRadius: 5,
+  },
+  buttonText: {
+    textAlign: 'center',
+    borderRadius: 5,
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 15,
   },
   facaCadastro: {
-    top: 280,
+    top: '60%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -103,21 +118,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#CC6600',
     left: 5,
-  },
-  button: {
-    backgroundColor: '#CC6600',
-    width: 354,
-    height: 50,
-    justifyContent: 'center',
-    top: 200,
-    borderRadius: 5,
-  },
-  buttonText: {
-    textAlign: 'center',
-    borderRadius: 5,
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 15,
   },
 });
 
