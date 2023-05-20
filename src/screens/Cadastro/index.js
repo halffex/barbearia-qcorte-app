@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
@@ -48,7 +49,8 @@ const Cadastro = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      
+
+      <StatusBar style="content-light" />
       <View style={styles.centeredView}>
         <View style={styles.selecione}>
           <Text style={styles.text}>Selecione um Perfil</Text>
@@ -113,8 +115,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   selecione: {
-    marginBottom: 70,
-    marginTop: 80,
+    marginBottom: '15%',
+    marginTop: '20%',
   },
   text: {
     textAlign: 'center', 
@@ -129,12 +131,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#CC6600'
   },
   cards: {
-    top: 40,
+    top: '10%',
+    width: '100%',
+    alignItems: 'center',
     gap: 25,
   },
   card: {
     justifyContent: 'center',
-    width: 350,
+    width: '85%',
     height: 120, 
     borderRadius: 5,
   },
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
     left: 30,
   },
   facaLogin: {
-    top: 70,
+    top: '20%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -167,10 +171,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#CC6600',
-    width: 349,
+    width: '85%',
     height: 50,
     justifyContent: 'center',
-    top: 200,
+    top: '30%',
     borderRadius: 5,
   },
   buttonText: {
