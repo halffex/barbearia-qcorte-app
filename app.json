@@ -15,9 +15,19 @@
       "**/*"
     ],
     "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "Permissão para acessar a câmera",
+        "NSPhotoLibraryUsageDescription": "Permissão para acessar a biblioteca de fotos",
+        "NSPhotoLibraryAddUsageDescription": "Permissão para salvar fotos na biblioteca"
+      },
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
