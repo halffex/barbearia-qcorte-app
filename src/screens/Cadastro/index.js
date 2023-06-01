@@ -2,9 +2,20 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import barberprox from '../barberprox';
+
 
 
 const Cadastro = ({navigation}) => {
+
+  const voltar = () => {
+    console.log("voltou"),
+    navigation.reset({
+      index: 0,
+      routes: [{name: "Login"}]
+    });
+  };
+ 
 
   const [colors, setColors] = useState({
     card1: '#6A441E',
@@ -89,7 +100,8 @@ const Cadastro = ({navigation}) => {
         </View>
 
         <TouchableOpacity 
-          style={styles.button}
+         style={styles.button}
+         onPress={() => navigation.navigate('Barberprox')}
         >
           <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
