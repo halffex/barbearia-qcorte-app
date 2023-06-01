@@ -6,10 +6,6 @@ import Routes from './src/routes';
 
 export default function App() {
   return (
-    /*<>
-      <Login />
-      <StatusBar style="light" />
-    </>*/
 
     <NavigationContainer>
       <StatusBar style="ligth" />

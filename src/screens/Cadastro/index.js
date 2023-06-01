@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -53,8 +53,10 @@ const Cadastro = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <StatusBar style="content-light" />
+      <StatusBar style="light" />
+
       <View style={styles.centeredView}>
+        
         <View style={styles.selecione}>
           <Text style={styles.text}>Selecione um Perfil</Text>
           <View style={styles.barra}></View>
@@ -92,7 +94,7 @@ const Cadastro = ({navigation}) => {
 
         <View style={styles.facaLogin}>
           <Text style={styles.possuiConta}> Já possui uma conta?</Text> 
-          <TouchableOpacity onPress={() => voltar()}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.textBold}>Faça login</Text>
           </TouchableOpacity>
         </View>
@@ -103,7 +105,7 @@ const Cadastro = ({navigation}) => {
         >
           <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
-
+        
       </View>
     </SafeAreaView>
   );

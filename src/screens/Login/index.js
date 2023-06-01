@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 import Input from '../../components/Input';
 
@@ -8,17 +9,19 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
 
-  const entrar = () => {
-    console.log("entrou")
-    navigation.reset({
-      index: 0,
-      routes: [{name: "Cadastro"}]
-    });
-  };
+  // const entrar = () => {
+  //   console.log("entrou")
+  //   navigation.reset({
+  //     index: 0,
+  //     routes: [{name: "Cadastro"}]
+  //   });
+  // };
 
   return (
-    <View style={styles.container}>
-      
+    <SafeAreaView style={styles.container}>
+
+      <StatusBar style="light" />
+
       <View style={styles.centeredView}>
         <View style={styles.backgroundLogo}>
           
@@ -40,8 +43,8 @@ const Login = ({navigation}) => {
           autoCapitalize="none"
           keyboardType="default"
         />
-        <TouchableOpacity>
-          <Text style={styles.esqueceu}>Esqueceu a senha?</Text>
+        <TouchableOpacity style={styles.esqueceu}>
+          <Text style={styles.textEsqueceu}>Esqueceu a senha?</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -52,12 +55,12 @@ const Login = ({navigation}) => {
 
         <View style={styles.facaCadastro}>
           <Text style={styles.criarConta}>Não possui conta?</Text>
-          <TouchableOpacity onPress={() => entrar()}>
+          <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
             <Text style={styles.textBold}>Faça seu cadastro</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -84,9 +87,12 @@ const styles = StyleSheet.create({
     left: 15,
   },
   esqueceu: {
+    top: '40%',
+    alignSelf: 'flex-end'
+  },
+  textEsqueceu: {
     color: '#fff',
-    top: '800%',
-    left: 115,
+    right: '8%'
   },
   button: {
     backgroundColor: '#CC6600',
