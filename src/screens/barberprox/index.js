@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import BarberCard from './BarberCard';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const Barberprox = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  const navigation = useNavigation();
 
   const handleCardPress = (index) => {
     setSelectedCardIndex(index);
+  };
+
+  const handleNextScreen = () => {
+    navigation.navigate('Perfil'); // A Proxima Tela  
   };
 
   return (
@@ -47,8 +53,12 @@ const Barberprox = () => {
 
       {/* Barra laranja */}
       <View style={styles.orangeBar}>
-        <Icon name="chevron-left" size={30} color="white" style={styles.barIcon} />
-        <Icon name="chevron-right" size={30} color="white" style={styles.barIcon} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" size={30} color="white" style={styles.barIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNextScreen}>
+          <Icon name="chevron-right" size={30} color="white" style={styles.barIcon} />
+        </TouchableOpacity>
       </View>
     </View>
   );
