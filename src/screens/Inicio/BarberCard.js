@@ -24,10 +24,10 @@ const BarberCard = ({ imageSource, barberName, rating, selected, onPress }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    width: 355,
-    height: 70,
+    width: 360,
+    height: 90,
     backgroundColor: '#6a441e',
-    borderRadius: 10,
+    borderRadius: 7,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 5,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     marginRight: 120,
   },
   barberImage: {
-    width: 60,
+    width: 50,
     height: 50,
     marginBottom: 10,
   },
