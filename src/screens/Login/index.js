@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import Input from '../../components/Input';
 
-const Login = ({navigation}) => {
+export default function Login({navigation}) {
 
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
@@ -126,5 +126,3 @@ const styles = StyleSheet.create({
     left: 5,
   },
 });
-
-export default Login;

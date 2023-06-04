@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import * as ImagePicker from 'expo-image-picker';
 
 
-const Perfil = () => {
+export default function Perfil() {
 
   const handleImageUser = () => {
     setShowInitialImage(false);
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   textPerfil: {
     textAlign: 'center', 
     color: 'white', 
-    fontSize: 20, 
+    fontSize: 23, 
     fontWeight: 'bold'
   },
   barra: {
@@ -140,5 +140,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 });
-
-export default Perfil;
