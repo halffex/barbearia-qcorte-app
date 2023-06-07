@@ -44,15 +44,17 @@ const styles = StyleSheet.create({
   cardContent: {
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   cardText: {
     marginLeft: 10,
     marginRight: 120,
   },
   barberImage: {
-    width: 50,
-    height: 50,
-    marginBottom: 10,
+    width: 40,
+    height: 40,
+    marginLeft: -30,
+    marginRight: 10,
   },
   barberName: {
     fontSize: 16,

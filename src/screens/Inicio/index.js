@@ -18,28 +18,28 @@ export default function Inicio() {
 
       <View style={styles.cardContainer}>
         <BarberCard
-          imageSource={require('../../../assets/barbearia-9.png')}
+          imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 1"
           rating="4.5"
           selected={selectedCardIndex === 0}
           onPress={() => handleCardPress(0)}
         />
         <BarberCard
-          imageSource={require('../../../assets/barbearia-9.png')}
+          imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 2"
           rating="2.8"
           selected={selectedCardIndex === 1}
           onPress={() => handleCardPress(1)}
         />
         <BarberCard
-          imageSource={require('../../../assets/barbearia-9.png')}
+          imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 3"
           rating="3.6"
           selected={selectedCardIndex === 2}
           onPress={() => handleCardPress(2)}
         />
         <BarberCard
-          imageSource={require('../../../assets/barbearia-9.png')}
+          imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 4"
           rating="1.4"
           selected={selectedCardIndex === 3}

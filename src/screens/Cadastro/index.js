@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -72,11 +72,9 @@ export default function Cadastro({navigation}) {
           >
             <Text style={styles.textSelect}>Sou barbeiro</Text>
 
-            <Icon 
-              name={"email"} 
-              size={35} 
-              color={'#fff'} 
-              style={styles.icon}
+            <Image 
+              style={styles.foto}
+              source={require('../../../src/assets/icone-barbearia.png')}
             />
           </TouchableOpacity>
         </View>
@@ -147,6 +145,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     left: 30,
+  },
+  foto: {
+    width: 40, 
+    height: 40,
+    position: 'absolute',
+    marginLeft: 30,
   },
   facaLogin: {
     top: '20%',
