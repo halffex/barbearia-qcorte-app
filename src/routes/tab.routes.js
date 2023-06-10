@@ -4,6 +4,7 @@ import Inicio from "../screens/Inicio";
 import Perfil from "../screens/Perfil";
 
 import { Ionicons } from '@expo/vector-icons'
+import Agendamento from "../screens/Agendamento";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,10 +47,11 @@ export default function TabRoutes() {
             if(focused) {
               return <Ionicons name="person" size={size} color={color} />
             }
-            return <Ionicons name="person-outline" size={size} color={color} />
+            return <Ionicons name="person-outline" size={size} color={color} /> 
           }
         }}
       />
-    </Tab.Navigator>
+
+          </Tab.Navigator>
   )
 }

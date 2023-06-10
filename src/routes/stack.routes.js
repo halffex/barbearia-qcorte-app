@@ -4,6 +4,7 @@ import TabRoutes from "./tab.routes";
 
 import Login from "../screens/Login";
 import Cadastro from "../screens/Cadastro";
+import Agendamento from "../screens/Agendamento";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,11 @@ export default function StackRoutes() {
       <Stack.Screen 
         name="Inicio"
         component={TabRoutes}
+      />
+
+      <Stack.Screen
+        name="Agendamento"
+        component={Agendamento}
       />
     </Stack.Navigator>
   )

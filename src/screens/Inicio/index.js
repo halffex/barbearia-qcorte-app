@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import BarberCard from './BarberCard';
+import Agendamento from '../Agendamento';
 
 
-export default function Inicio() {
+
+export default function Inicio({ navigation }) {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
 
   const handleCardPress = (index) => {
@@ -22,28 +24,28 @@ export default function Inicio() {
           barberName="Barbearia 1"
           rating="4.5"
           selected={selectedCardIndex === 0}
-          onPress={() => handleCardPress(0)}
+          onPress={() => navigation.navigate('Agendamento')}
         />
         <BarberCard
           imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 2"
           rating="2.8"
           selected={selectedCardIndex === 1}
-          onPress={() => handleCardPress(1)}
+          onPress={() => navigation.navigate('Agendamento')}
         />
         <BarberCard
           imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 3"
           rating="3.6"
           selected={selectedCardIndex === 2}
-          onPress={() => handleCardPress(2)}
+          onPress={() => navigation.navigate('Agendamento')}
         />
         <BarberCard
           imageSource={require('../../../src/assets/icone-barbearia.png')}
           barberName="Barbearia 4"
           rating="1.4"
           selected={selectedCardIndex === 3}
-          onPress={() => handleCardPress(3)}
+          onPress={() => navigation.navigate('Agendamento')}
         />
       </View>
     </SafeAreaView>
