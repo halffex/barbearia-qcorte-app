@@ -9,14 +9,6 @@ export default function Login({navigation}) {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
 
-  // const entrar = () => {
-  //   console.log("entrou")
-  //   navigation.reset({
-  //     index: 0,
-  //     routes: [{name: "Cadastro"}]
-  //   });
-  // };
-
   return (
     <SafeAreaView style={styles.container}>
 
