@@ -6,16 +6,8 @@ import Input from '../../components/Input';
 
 export default function Login({navigation}) {
 
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
-
-  // const entrar = () => {
-  //   console.log("entrou")
-  //   navigation.reset({
-  //     index: 0,
-  //     routes: [{name: "Cadastro"}]
-  //   });
-  // };
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   return (
     <SafeAreaView style={styles.container}>
