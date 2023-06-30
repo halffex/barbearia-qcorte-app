@@ -13,13 +13,6 @@ const CadastroUsuario = ({navigation}) => {
 
   const [password, setPassword] = useState(null)
 
-  const criarconta = () => {
-    console.log("Sucess")
-    navigation.reset({
-      index: 0,
-      routes: [{name: "Login"}]
-    });
-  };
 
   return (
 
