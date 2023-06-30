@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Input from '../../components/Input';
 
 
-
 const CadastroUsuario = ({navigation}) => {
 
   const [name, setName] = useState(null)
