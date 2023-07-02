@@ -1,67 +1,51 @@
-import React, { useState }from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import RatingStars from './stars'
+import RatingStars from './stars';
 
 export default function Agendamento() {
+  const [selectedItem, setSelectedItem] = useState(null);
 
-    const [selectedItem, setSelectedItem] = useState(null);
+  const handleStarPress = (stars) => {};
 
-    const handleStarPress = (stars) => {
-    };
-    
-    const renderItem = ({ item }) => (
-      <TouchableOpacity
-        onPress={() => handleItemClick(item)}
-        style={[
-          styles.item,
-          selectedItem === item.id && styles.selectedItem,
-        ]}
-      >
-        <Text style={styles.lista}>{item.title}</Text>
-      </TouchableOpacity>
-    );
-  
-    const handleItemClick = (item) => {
-      setSelectedItem(item.id);
-    };  
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => handleItemClick(item)}
+      style={[styles.item, selectedItem === item.id && styles.selectedItem]}
+    >
+      <Text style={styles.lista}>{item.title}</Text>
+    </TouchableOpacity>
+  );
 
-    const handleCardPress = () => {
-    };
+  const handleItemClick = (item) => {
+    setSelectedItem(item.id);
+  };
+
+  const handleCardPress = () => {};
 
   return (
     <View style={styles.container}>
-      <Image 
-              style={styles.foto}
-              source={require('../../../src/assets/icone-barbearia.png')}
-            />
+      <Image style={styles.foto} source={require('../../../src/assets/icone-barbearia.png')} />
       <Text style={styles.title1}>Barbearia</Text>
       <Star />
       <Text style={styles.title2}>Endereço</Text>
-      <Text style={styles.endereço}>Rua das ruas, 00, Centro, Currais Novos -{'\n'}
-                                    Rio Grande do Norte, Brasil, CEP 59380-000</Text>
+      <Text style={styles.endereço}>
+        Rua das ruas, 00, Centro, Currais Novos -{'\n'}Rio Grande do Norte, Brasil, CEP 59380-000
+      </Text>
       <Text style={styles.title3}>Sobre</Text>
       <Text style={styles.sobre}>Descrição da barbearia</Text>
       <Text style={styles.title4}>Serviços</Text>
       <Text style={styles.title5}>Avaliação</Text>
       <View style={styles.container2}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        horizontal={true}
-      />
+        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id.toString()} horizontal={true} />
       </View>
       <View style={styles.header}>
-      <RatingStars numStars={5} onStarPress={handleStarPress} />
+        <RatingStars numStars={5} onStarPress={handleStarPress} />
       </View>
-      <TouchableOpacity 
-         style={styles.button}
-         onPress={() => handleCardPress()}
-        >
-          <Text style={styles.buttonText}>Agendar</Text>
-        </TouchableOpacity>
-    </View>   
+      <TouchableOpacity style={styles.button} onPress={() => handleCardPress()}>
+        <Text style={styles.buttonText}>Agendar</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -86,54 +70,54 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container2:{
+  container2: {
     flex: 1,
-    bottom:-195,
-    left: 30
+    bottom: -195,
+    left: 30,
   },
-  title1:{
+  title1: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
     left: -42,
-    top: 100
+    top: 100,
   },
-  title2:{
+  title2: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
-    left: -114,
-    top: 150
+    left: -136, // Ajuste de posicionamento para a esquerda
+    top: 150,
   },
-  title3:{
+  title3: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
-    left: -128,
-    top: 170
+    left: -152, // Ajuste de posicionamento para a esquerda
+    top: 170,
   },
-  title4:{
+  title4: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
-    left: -117,
-    top: 190
+    left: -140,
+    top: 190,
   },
-  title5:{
+  title5: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
-    left: -113,
-    top: 310
+    left: -137,
+    top: 310,
   },
-  starContainer:{
-    left: -72,
-    top: 105
+  starContainer: {
+    left: -78,
+    top: 105,
   },
   foto: {
     top: 102,
     left: 1,
-    width: 40, 
+    width: 40,
     height: 40,
     position: 'absolute',
     marginLeft: 30,
@@ -141,17 +125,17 @@ const styles = StyleSheet.create({
   endereço: {
     fontSize: 13,
     color: '#FFFFFF',
-    left: -37,
-    top: 148
+    left: -50, // Ajuste de posicionamento para a esquerda
+    top: 148,
   },
   sobre: {
     fontSize: 13,
     color: '#FFFFFF',
-    left: -89,
-    top: 170
+    left: -110, // Ajuste de posicionamento para a esquerda
+    top: 170,
   },
   item: {
-    width: 140,
+    width: 120,
     height: 65,
     backgroundColor: '#3D2A17',
     justifyContent: 'center',
@@ -160,20 +144,21 @@ const styles = StyleSheet.create({
     borderColor: '#CC6600',
     borderWidth: 2,
     borderRadius: 15,
+    left:-6,
   },
   lista: {
     color: '#FFFFFF',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   title: {
     fontSize: 13,
     fontWeight: 'bold',
   },
   selectedItem: {
-    backgroundColor: '#CC6600', 
+    backgroundColor: '#CC6600',
   },
   header: {
-    top:-70
+    top: -220,
   },
   button: {
     backgroundColor: '#CC6600',
@@ -189,5 +174,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 15,
-  }
-})
+  },
+});

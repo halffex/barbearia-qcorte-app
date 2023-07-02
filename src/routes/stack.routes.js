@@ -13,11 +13,12 @@ export default function StackRoutes() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-      <Stack.Screen 
-        name="Calendario"
-        component={Calendario}
-      />
+      
 
+      <Stack.Screen
+        name="Agendamento"
+        component={Agendamento}
+      />
       <Stack.Screen 
         name="Login"
         component={Login}
@@ -33,9 +34,11 @@ export default function StackRoutes() {
         component={TabRoutes}
       />
 
-      <Stack.Screen
-        name="Agendamento"
-        component={Agendamento}
+    
+
+      <Stack.Screen 
+        name="Calendario"
+        component={Calendario}
       />
     </Stack.Navigator>
   )

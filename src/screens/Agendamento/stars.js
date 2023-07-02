@@ -16,7 +16,7 @@ const RatingStars = ({ numStars, onStarPress }) => {
       <TouchableOpacity key={star} onPress={() => handleStarPress(star)}>
         <Icon
           name={isFilled ? 'star' : 'star-o'}
-          size={50}
+          size={65}
           color={isFilled ? 'white' : '#CC6600'}
         />
       </TouchableOpacity>
