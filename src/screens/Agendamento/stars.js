@@ -29,6 +29,7 @@ const RatingStars = ({ numStars, onStarPress }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    gap: 15,
   },
 });
 

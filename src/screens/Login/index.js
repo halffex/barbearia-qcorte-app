@@ -35,7 +35,10 @@ export default function Login({navigation}) {
           autoCapitalize="none"
           keyboardType="default"
         />
-        <TouchableOpacity style={styles.esqueceu}>
+        <TouchableOpacity 
+          style={styles.esqueceu}
+          onPress={() => navigation.navigate('EsqueceuSenha')}
+        >
           <Text style={styles.textEsqueceu}>Esqueceu a senha?</Text>
         </TouchableOpacity>
 

@@ -1,45 +1,45 @@
 import React, { useState }from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import RatingStars from './stars'
 
 export default function Agendamento() {
 
-    const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-    const handleStarPress = (stars) => {
-    };
-    
-    const renderItem = ({ item }) => (
-      <TouchableOpacity
-        onPress={() => handleItemClick(item)}
-        style={[
-          styles.item,
-          selectedItem === item.id && styles.selectedItem,
-        ]}
-      >
-        <Text style={styles.lista}>{item.title}</Text>
-      </TouchableOpacity>
-    );
+  const handleStarPress = (stars) => {
+  };
   
-    const handleItemClick = (item) => {
-      setSelectedItem(item.id);
-    };  
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => handleItemClick(item)}
+      style={[
+        styles.item,
+        selectedItem === item.id && styles.selectedItem,
+      ]}
+    >
+      <Text style={styles.lista}>{item.title}</Text>
+    </TouchableOpacity>
+  );
 
-    const handleCardPress = () => {
-    };
+  const handleItemClick = (item) => {
+    setSelectedItem(item.id);
+  };  
+
+  const handleCardPress = () => {
+  };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image 
-              style={styles.foto}
-              source={require('../../../src/assets/icone-barbearia.png')}
-            />
+        style={styles.foto}
+        source={require('../../../src/assets/icone-barbearia.png')}
+      />
       <Text style={styles.title1}>Barbearia</Text>
       <Star />
       <Text style={styles.title2}>Endereço</Text>
       <Text style={styles.endereço}>Rua das ruas, 00, Centro, Currais Novos -{'\n'}
-                                    Rio Grande do Norte, Brasil, CEP 59380-000</Text>
+      Rio Grande do Norte, Brasil, CEP 59380-000</Text>
       <Text style={styles.title3}>Sobre</Text>
       <Text style={styles.sobre}>Descrição da barbearia</Text>
       <Text style={styles.title4}>Serviços</Text>
@@ -59,9 +59,9 @@ export default function Agendamento() {
          style={styles.button}
          onPress={() => handleCardPress()}
         >
-          <Text style={styles.buttonText}>Agendar</Text>
-        </TouchableOpacity>
-    </View>   
+        <Text style={styles.buttonText}>Agendar</Text>
+      </TouchableOpacity>
+    </SafeAreaView>   
   );
 }
 
@@ -86,47 +86,47 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container2:{
+  container2: {
     flex: 1,
     bottom:-195,
     left: 30
   },
-  title1:{
+  title1: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
     left: -42,
     top: 100
   },
-  title2:{
+  title2: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
     left: -114,
     top: 150
   },
-  title3:{
+  title3: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
     left: -128,
     top: 170
   },
-  title4:{
+  title4: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
     left: -117,
     top: 190
   },
-  title5:{
+  title5: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CC6600',
     left: -113,
     top: 310
   },
-  starContainer:{
+  starContainer: {
     left: -72,
     top: 105
   },
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#CC6600', 
   },
   header: {
-    top:-70
+    top: '-23%',
   },
   button: {
     backgroundColor: '#CC6600',
@@ -190,4 +190,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
   }
-})
+});

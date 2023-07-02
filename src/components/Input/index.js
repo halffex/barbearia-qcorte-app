@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 45,
-    top: 14,
+    top: 13,
   },
   iconSecrety: {
     position: 'absolute',

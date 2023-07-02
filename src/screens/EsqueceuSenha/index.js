@@ -3,68 +3,35 @@ import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-na
 import Input from '../../components/Input';
 
 
-export default function CadastroUsuario({navigation}) {
+export default function EsqueceuSenha() {
 
-  const [name, setName] = useState(null)
-  const [telefone, setTelefone] = useState(null)
   const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
-  
-  return (
 
-    
+  return (
     <SafeAreaView style = {styles.container}>
       
       <View style={styles.centeredView}>
 
         <View style={styles.container2}>
-          <Text style={styles.textoPerfil}>Criar conta</Text>
+          <Text style={styles.redefinirSenha}>Redefinir senha</Text>
           <View style={styles.barra}></View>
         </View>
 
+        <Text style={styles.descricao}>Esqueceu sua senha? Informe o email utilizado no seu cadastro que lhe ajudaremos a definir uma nova senha.</Text>
+
         <Input 
-          placeholder="Nome"
-          autoCapitalize="none"
-          onChangeText={value => setName(value)}
-          autoCorrect={false}
-          keyboardType="default"
-        />
-        <Input 
-          placeholder="(XX) XXXXX-XXXX"
-          autoCapitalize="none"
-          onChangeText={value => setTelefone(value)}
-          autoCorrect={false}
-          keyboardType="default"
-        />
-        <Input 
+          iconName={"email"} 
           placeholder="E-mail"
           autoCapitalize="none"
           onChangeText={value => setEmail(value)}
           autoCorrect={false}
           keyboardType="email-address"
         />
-        <Input 
-          secureTextEntry 
-          autoCorrect={false}
-          onChangeText={value => setPassword(value)}
-          placeholder="Senha"
-          autoCapitalize="none"
-          keyboardType="default"
-        />
-        <Input 
-          secureTextEntry 
-          autoCorrect={false}
-          onChangeText={value => setPassword(value)}
-          placeholder="Confirmar senha"
-          autoCapitalize="none"
-          keyboardType="default"
-        />
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => navigation.navigate('CadastroUsuario')}
         >
-          <Text style={styles.buttonText}>Criar conta</Text>
+          <Text style={styles.buttonText}>Enviar</Text>
         </TouchableOpacity>
       </View> 
     </SafeAreaView>
@@ -77,23 +44,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#3D2A17',
   },
   centeredView: {
-    top: '5%',
+    top: '10%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   container2: {
-    marginLeft: '-60%',
+    marginLeft: '-50%',
   },
-  textoPerfil: { 
+  redefinirSenha: { 
     color: 'white', 
     fontSize: 20, 
     fontWeight: 'bold',
     borderBottomColor: '#CC6600',
     borderBottomWidth: 2,
   },
+  descricao: {
+    top: '7%',
+    color: 'white',
+    width: '85%'
+  },
   barra: {
     height: 3,
-    width: 90,
+    width: 130,
     borderRadius: 100,
     backgroundColor: '#CC6600'
   },
@@ -102,7 +74,7 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 50,
     justifyContent: 'center',
-    top: '70%',
+    top: '230%',
     borderRadius: 5,
   },
   buttonText: {
