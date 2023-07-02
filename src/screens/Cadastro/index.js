@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 
-export default function Cadastro({navigation}) {
+export default function Cadastro() {
   
+  const navigation = useNavigation();
   const [colors, setColors] = useState({
     card1: '#6A441E',
     card2: '#6A441E'
@@ -39,6 +41,10 @@ export default function Cadastro({navigation}) {
     }
   };
 
+  const handleNavigation = () => {
+    navigation.navigate('CadastroUsuario');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
 
@@ -54,7 +60,10 @@ export default function Cadastro({navigation}) {
         <View style={styles.cards}>
           <TouchableOpacity 
             style={[styles.card, { backgroundColor: colors.card1 }]}
-            onPress={handleCard1Press}
+            onPress={() => {
+              handleCard1Press();
+              handleNavigation();
+            }}
           >
             <Text style={styles.textSelect}>Sou cliente</Text>
             

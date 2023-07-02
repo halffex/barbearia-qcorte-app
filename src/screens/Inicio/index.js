@@ -4,7 +4,6 @@ import BarberCard from './BarberCard';
 import Agendamento from '../Agendamento';
 
 
-
 export default function Inicio({ navigation }) {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
 

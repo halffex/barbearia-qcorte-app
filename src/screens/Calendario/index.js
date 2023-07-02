@@ -45,7 +45,8 @@ LocaleConfig.locales['pt-br'] = {
 
 LocaleConfig.defaultLocale = 'pt-br';
 
-const Calendario = () => {
+export default function Calendario() {
+  
   const [selectedDate, setSelectedDate] = useState(null);
   const [morningCardSelected, setMorningCardSelected] = useState(null);
   const [afternoonCardSelected, setAfternoonCardSelected] = useState(null);
@@ -282,5 +283,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default Calendario;

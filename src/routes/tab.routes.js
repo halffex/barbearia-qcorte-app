@@ -4,7 +4,6 @@ import Inicio from "../screens/Inicio";
 import Perfil from "../screens/Perfil";
 
 import { Ionicons } from '@expo/vector-icons'
-import Agendamento from "../screens/Agendamento";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +19,6 @@ export default function TabRoutes() {
           position: "absolute",
           backgroundColor: '#CC6600',
           borderTopWidth: 0,
-
-          borderRadius: 5,
         }
       }}
 
@@ -52,6 +49,6 @@ export default function TabRoutes() {
         }}
       />
 
-          </Tab.Navigator>
+    </Tab.Navigator>
   )
 }
