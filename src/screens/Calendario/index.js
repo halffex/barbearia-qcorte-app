@@ -1,46 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 
 LocaleConfig.locales['pt-br'] = {
-  monthNames: [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro',
-  ],
-  monthNamesShort: [
-    'Jan',
-    'Fev',
-    'Mar',
-    'Abr',
-    'Mai',
-    'Jun',
-    'Jul',
-    'Ago',
-    'Set',
-    'Out',
-    'Nov',
-    'Dez',
-  ],
-  dayNames: [
-    'Domingo',
-    'Segunda-feira',
-    'Terça-feira',
-    'Quarta-feira',
-    'Quinta-feira',
-    'Sexta-feira',
-    'Sábado',
-  ],
+  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+  dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
   dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+  today: 'Hoje'
 };
 
 LocaleConfig.defaultLocale = 'pt-br';
@@ -93,12 +60,15 @@ export default function Calendario() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Data do Agendamento</Text>
-        <View style={styles.lineContainer}>
-          <View style={styles.underline} />
+    <SafeAreaView style={styles.container}>
+
+      <View style={styles.centeredView}>
+
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Data do agendamento</Text>
+          <View style={styles.barra}></View>
         </View>
+
         <View style={styles.calendarContainer}>
           <Calendar
             onDayPress={handleDateSelect}
@@ -107,104 +77,29 @@ export default function Calendario() {
               selectedDayBackgroundColor: '#CC6600',
               todayTextColor: '#CC6600',
               arrowColor: '#CC6600',
+              calendarBackground: '#3D2A17',
+              backgroundColor: '#ffffff',
+              textSectionTitleColor: '#ffffff',
+              selectedDayTextColor: '#ffffff',
+              dayTextColor: '#ffffff',
+              textDisabledColor: '#b6c1cd',
+              monthTextColor: '#ffffff',
             }}
+            
           />
         </View>
-        <Text style={styles.belowTitle}>Abaixo do Calendário</Text>
-        <View style={styles.gridContainer}>
-          <View style={styles.column}>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isMorningCardSelected(0) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleMorningCardSelect(0)}
-            >
-              <Text style={styles.turnoText}>Manhã</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isMorningCardSelected(1) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleMorningCardSelect(1)}
-            >
-              <Text style={styles.turnoText}>09:30</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isMorningCardSelected(2) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleMorningCardSelect(2)}
-            >
-              <Text style={styles.turnoText}>10:30</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.column}>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isAfternoonCardSelected(0) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleAfternoonCardSelect(0)}
-            >
-              <Text style={styles.turnoText}>Tarde</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isAfternoonCardSelected(1) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleAfternoonCardSelect(1)}
-            >
-              <Text style={styles.turnoText}>14:30</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isAfternoonCardSelected(2) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleAfternoonCardSelect(2)}
-            >
-              <Text style={styles.turnoText}>16:00</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.column}>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isNightCardSelected(0) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleNightCardSelect(0)}
-            >
-              <Text style={styles.turnoText}>Noite</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isNightCardSelected(1) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleNightCardSelect(1)}
-            >
-              <Text style={styles.turnoText}>19:00</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.card,
-                { backgroundColor: isNightCardSelected(2) ? '#CC6600' : '#8B4513' },
-              ]}
-              onPress={() => handleNightCardSelect(2)}
-            >
-              <Text style={styles.turnoText}>20:00</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+
+
+
+        
+        
+          
+
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -212,61 +107,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3D2A17',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 400, // Ajuste a altura conforme necessário
   },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
+  centeredView: {
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  titleContainer: {
+    marginBottom: '5%',
+    marginTop: '10%',
   },
   title: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
+    textAlign: 'center', 
+    color: 'white', 
+    fontSize: 23, 
+    fontWeight: 'bold'
   },
-  lineContainer: {
-    marginBottom: 20,
-  },
-  underline: {
-    width: '65%',
-    height: 2,
-    backgroundColor: '#CC6600',
+  barra: {
+    height: 3,
+    width: 260,
+    borderRadius: 100,
+    backgroundColor: '#CC6600'
   },
   calendarContainer: {
-    marginTop: -15,
-    width: 308,
-    height: 168,
-  },
-  belowTitle: {
-    color: 'white',
-    fontSize: 18,
-    textAlign: 'center',
-    marginTop: 200,
-  },
-  gridContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  column: {
-    marginHorizontal: 10,
-  },
-  card: {
-    width: 70,
-    height: 34,
-    backgroundColor: '#8B4513',
-    marginBottom: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  turnoText: {
-    color: 'white',
-    fontWeight: 'bold',
+    width: '90%',
+    height: 'auto',
   },
   button: {
     width: 340,
@@ -274,8 +138,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#CC6600',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
-    marginTop: 70, // Atualize a margem superior conforme necessário
+    borderRadius: 5,
+    marginTop: '10%', // Atualize a margem superior conforme necessário
   },
   buttonText: {
     color: 'white',

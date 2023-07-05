@@ -16,6 +16,11 @@ export default function StackRoutes() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
 
       <Stack.Screen 
+        name="Calendario"
+        component={Calendario}
+      />
+
+      <Stack.Screen 
         name="Login"
         component={Login}
       />
