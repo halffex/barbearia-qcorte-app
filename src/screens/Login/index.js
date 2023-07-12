@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+// import { firebase } from '@react-native-firebase/auth';
 
 import Input from '../../components/Input';
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
 
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      console.log('Usuário autenticado:', user.uid);
+      // Aqui você pode redirecionar o usuário para a próxima tela do aplicativo após o login bem-sucedido
+    } catch (error) {
+      console.log('Erro de autenticação:', error);
+      // Aqui você pode exibir uma mensagem de erro para o usuário na tela de login
+    }
+  };
+
+  const handleSignup = () => {
+    // Aqui você pode adicionar a lógica para redirecionar o usuário para a tela de cadastro
+    navigation.navigate('Cadastro');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,7 +40,8 @@ export default function Login({navigation}) {
           iconName={"email"} 
           placeholder="E-mail"
           autoCapitalize="none"
-          onChangeText={value => setEmail(value)}
+          onChangeText={setEmail}
+          value={email}
           autoCorrect={false}
           keyboardType="email-address"
         />
@@ -30,7 +49,8 @@ export default function Login({navigation}) {
           iconName={"key-variant"} 
           secureTextEntry 
           autoCorrect={false}
-          onChangeText={value => setPassword(value)}
+          onChangeText={setPassword}
+          value={password}
           placeholder="Senha"
           autoCapitalize="none"
           keyboardType="default"
@@ -50,7 +70,10 @@ export default function Login({navigation}) {
 
         <View style={styles.facaCadastro}>
           <Text style={styles.criarConta}>Não possui conta?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+          <TouchableOpacity 
+            // onPress={() => navigation.navigate('Cadastro')}
+            onPress={handleSignup}
+          >
             <Text style={styles.textBold}>Faça seu cadastro</Text>
           </TouchableOpacity>
         </View>

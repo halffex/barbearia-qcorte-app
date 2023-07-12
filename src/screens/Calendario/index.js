@@ -12,51 +12,28 @@ LocaleConfig.locales['pt-br'] = {
 
 LocaleConfig.defaultLocale = 'pt-br';
 
+const turnos = [
+  { turno: 'Manhã', horarios: ['09:30', '10:30'] },
+  { turno: 'Tarde', horarios: ['14:30', '16:00'] },
+  { turno: 'Noite', horarios: ['19:00', '20:00'] },
+];
+
 export default function Calendario() {
-  
   const [selectedDate, setSelectedDate] = useState(null);
-  const [morningCardSelected, setMorningCardSelected] = useState(null);
-  const [afternoonCardSelected, setAfternoonCardSelected] = useState(null);
-  const [nightCardSelected, setNightCardSelected] = useState(null);
+  const [selectedTurno, setSelectedTurno] = useState(null);
+  const [selectedHorario, setSelectedHorario] = useState(null);
 
   const handleDateSelect = (date) => {
     setSelectedDate(date.dateString);
   };
 
-  const handleMorningCardSelect = (index) => {
-    if (morningCardSelected === index) {
-      setMorningCardSelected(null);
-    } else {
-      setMorningCardSelected(index);
-    }
+  const handleTurnoSelect = (index) => {
+    setSelectedTurno(index === selectedTurno ? null : index);
+    setSelectedHorario(null);
   };
 
-  const handleAfternoonCardSelect = (index) => {
-    if (afternoonCardSelected === index) {
-      setAfternoonCardSelected(null);
-    } else {
-      setAfternoonCardSelected(index);
-    }
-  };
-
-  const handleNightCardSelect = (index) => {
-    if (nightCardSelected === index) {
-      setNightCardSelected(null);
-    } else {
-      setNightCardSelected(index);
-    }
-  };
-
-  const isMorningCardSelected = (index) => {
-    return morningCardSelected === index;
-  };
-
-  const isAfternoonCardSelected = (index) => {
-    return afternoonCardSelected === index;
-  };
-
-  const isNightCardSelected = (index) => {
-    return nightCardSelected === index;
+  const handleHorarioSelect = (horario) => {
+    setSelectedHorario(horario === selectedHorario ? null : horario);
   };
 
   return (
@@ -85,23 +62,51 @@ export default function Calendario() {
               textDisabledColor: '#b6c1cd',
               monthTextColor: '#ffffff',
             }}
-            
           />
         </View>
 
+        <View style={styles.titleContainer2}>
+          <Text style={styles.title2}>Escolha seu horário</Text>
+          <View style={styles.barra2}></View>
+        </View>
 
-
-        
-        
-          
-
+        <View style={styles.turnoContainer}>
+          {turnos.map((turno, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.turnoCard,
+                { backgroundColor: index === selectedTurno ? '#CC6600' : '#8B4513' },
+              ]}
+              onPress={() => handleTurnoSelect(index)}
+            >
+              <Text style={styles.turnoText}>{turno.turno}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+        {selectedTurno !== null && (
+          <View style={styles.horarioContainer}>
+            {turnos[selectedTurno].horarios.map((horario, index) => (
+              <TouchableOpacity
+                key={index}
+                style={[
+                  styles.horarioCard,
+                  { backgroundColor: horario === selectedHorario ? '#CC6600' : '#8B4513' },
+                ]}
+                onPress={() => handleHorarioSelect(horario)}
+              >
+                <Text style={styles.horarioText}>{horario}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -114,17 +119,17 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     marginBottom: '5%',
-    marginTop: '10%',
+    marginTop: '8%',
   },
   title: {
     textAlign: 'center', 
     color: 'white', 
-    fontSize: 23, 
+    fontSize: 22, 
     fontWeight: 'bold'
   },
   barra: {
     height: 3,
-    width: 260,
+    width: 250,
     borderRadius: 100,
     backgroundColor: '#CC6600'
   },
@@ -132,14 +137,69 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 'auto',
   },
+  titleContainer2: {
+    marginBottom: '7%',
+    marginTop: '3%',
+  },
+  title2: {
+    textAlign: 'center', 
+    color: 'white', 
+    fontSize: 23, 
+    fontWeight: 'bold'
+  },
+  barra2: {
+    height: 3,
+    width: 230,
+    borderRadius: 100,
+    backgroundColor: '#CC6600'
+  },
+  turnoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  turnoCard: {
+    width: 90,
+    height: 40,
+    backgroundColor: '#8B4513',
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginHorizontal: 15,
+  },
+  turnoText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  horarioContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  horarioCard: {
+    width: 90,
+    height: 40,
+    backgroundColor: '#8B4513',
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginHorizontal: 20,
+  },
+  horarioText: {
+    color: 'white',
+    fontSize: 16,
+  },
   button: {
     width: 340,
-    height: 50,
+    height: 40,
     backgroundColor: '#CC6600',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    marginTop: '10%', // Atualize a margem superior conforme necessário
+    marginTop: '20%',
+    position: 'absolute',
+    bottom: -140,
   },
   buttonText: {
     color: 'white',

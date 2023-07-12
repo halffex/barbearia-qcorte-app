@@ -1,107 +1,70 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
-
 export default function Cadastro() {
-  
   const navigation = useNavigation();
-  const [colors, setColors] = useState({
-    card1: '#6A441E',
-    card2: '#6A441E'
-  });
+  const [selectedOption, setSelectedOption] = useState('');
 
-  const handleCard1Press = () => {
-    if(colors.card1 !== '#CC6600') {
-      setColors({
-        card1: '#CC6600',
-        card2: '#6A441E'
-      });
-    } else {
-      setColors({
-        card1: '#6A441E',
-        card2: '#6A441E'
-      });
-    }
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
   };
 
-  const handleCard2Press = () => {
-    if (colors.card2 !== '#CC6600') {
-      setColors({
-        card1: '#6A441E',
-        card2: '#CC6600'
-      });
-    } else {
-      setColors({
-        card1: '#6A441E',
-        card2: '#6A441E'
-      });
+  const handleContinue = () => {
+    if (selectedOption === 'cliente') {
+      navigation.navigate('CadastroUsuarioCliente');
+    } else if (selectedOption === 'barbeiro') {
+      navigation.navigate('CadastroUsuarioBarbeiro');
     }
   };
-
-  const handleNavigation = () => {
-    navigation.navigate('CadastroUsuario');
-  }
 
   return (
     <SafeAreaView style={styles.container}>
-
       <StatusBar style="light" />
-
       <View style={styles.centeredView}>
-        
         <View style={styles.selecione}>
           <Text style={styles.text}>Selecione um Perfil</Text>
           <View style={styles.barra}></View>
         </View>
-
         <View style={styles.cards}>
-          <TouchableOpacity 
-            style={[styles.card, { backgroundColor: colors.card1 }]}
-            onPress={() => {
-              handleCard1Press();
-              handleNavigation();
-            }}
+          <TouchableOpacity
+            style={[styles.card, selectedOption === 'cliente' ? styles.selectedCard : styles.unselectedCard]}
+            onPress={() => handleOptionSelect('cliente')}
           >
             <Text style={styles.textSelect}>Sou cliente</Text>
-            
-            <Icon 
-              name={"account"} 
-              size={40} 
-              color={'#fff'} 
+            <Icon
+              name="account"
+              size={40}
+              color="#fff"
               style={styles.icon}
             />
           </TouchableOpacity>
-
-          <TouchableOpacity 
-            style={[styles.card, { backgroundColor: colors.card2 }]}
-            onPress={handleCard2Press}
+          <TouchableOpacity
+            style={[styles.card, selectedOption === 'barbeiro' ? styles.selectedCard : styles.unselectedCard]}
+            onPress={() => handleOptionSelect('barbeiro')}
           >
             <Text style={styles.textSelect}>Sou barbeiro</Text>
-
-            <Image 
+            <Image
               style={styles.foto}
               source={require('../../../src/assets/icone-barbearia.png')}
             />
           </TouchableOpacity>
         </View>
-
         <View style={styles.facaLogin}>
-          <Text style={styles.possuiConta}> Já possui uma conta?</Text> 
+          <Text style={styles.possuiConta}>Já possui uma conta?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.textBold}>Faça login</Text>
           </TouchableOpacity>
         </View>
-
-        <TouchableOpacity 
-         style={styles.button}
-         onPress={() => navigation.navigate('Inicio')}
+        <TouchableOpacity
+          style={[styles.button, !selectedOption && styles.disabledButton]}
+          onPress={handleContinue}
+          disabled={!selectedOption} // Desativa o botão caso nenhuma opção esteja selecionada
         >
           <Text style={styles.buttonText}>Continuar</Text>
         </TouchableOpacity>
-        
       </View>
     </SafeAreaView>
   );
@@ -121,16 +84,16 @@ const styles = StyleSheet.create({
     marginTop: '20%',
   },
   text: {
-    textAlign: 'center', 
-    color: 'white', 
-    fontSize: 23, 
-    fontWeight: 'bold'
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 23,
+    fontWeight: 'bold',
   },
   barra: {
     height: 3,
     width: 220,
     borderRadius: 100,
-    backgroundColor: '#CC6600'
+    backgroundColor: '#CC6600',
   },
   cards: {
     top: '10%',
@@ -141,14 +104,21 @@ const styles = StyleSheet.create({
   card: {
     justifyContent: 'center',
     width: '85%',
-    height: 120, 
+    height: 120,
     borderRadius: 5,
+    backgroundColor: '#6A441E', // Alteração: cor de fundo padrão
+  },
+  selectedCard: {
+    backgroundColor: '#CC6600',
+  },
+  unselectedCard: {
+    backgroundColor: '#6A441E',
   },
   textSelect: {
-    textAlign: 'center', 
-    color: 'white', 
-    fontSize: 20, 
-    fontWeight: 'bold'
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   icon: {
     position: 'absolute',
@@ -156,7 +126,7 @@ const styles = StyleSheet.create({
     left: 30,
   },
   foto: {
-    width: 40, 
+    width: 40,
     height: 40,
     position: 'absolute',
     marginLeft: 30,
@@ -166,9 +136,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  }, 
+  },
   possuiConta: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 15,
   },
   textBold: {
@@ -182,8 +152,11 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 50,
     justifyContent: 'center',
-    top: '30%',
+    top: '40%',
     borderRadius: 5,
+  },
+  disabledButton: {
+    backgroundColor: '#999999', // Alteração: cor de fundo do botão desativado
   },
   buttonText: {
     textAlign: 'center',

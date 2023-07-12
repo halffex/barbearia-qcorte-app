@@ -5,7 +5,7 @@ import TabRoutes from "./tab.routes";
 import Login from "../screens/Login";
 import EsqueceuSenha from "../screens/EsqueceuSenha";
 import Cadastro from "../screens/Cadastro";
-import CadastroUsuario from "../screens/CadastroUsuario";
+import CadastroUsuarioCliente from "../screens/CadastroUsuarioCliente";
 import Agendamento from "../screens/Agendamento";
 import Calendario from "../screens/Calendario";
 
@@ -14,11 +14,6 @@ const Stack = createNativeStackNavigator();
 export default function StackRoutes() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-
-      <Stack.Screen 
-        name="Calendario"
-        component={Calendario}
-      />
 
       <Stack.Screen 
         name="Login"
@@ -36,8 +31,8 @@ export default function StackRoutes() {
       />
 
       <Stack.Screen 
-        name="CadastroUsuario"
-        component={CadastroUsuario}
+        name="CadastroUsuarioCliente"
+        component={CadastroUsuarioCliente}
       />
 
       <Stack.Screen 
@@ -49,6 +44,12 @@ export default function StackRoutes() {
         name="Agendamento"
         component={Agendamento}
       />
+
+      <Stack.Screen 
+        name="Calendario"
+        component={Calendario}
+      />
+
     </Stack.Navigator>
   )
 }

@@ -1,9 +1,10 @@
 import React, { useState }from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import RatingStars from './stars'
+import RatingStars from './stars';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Agendamento() {
+export default function Agendamento({ navigation }) {
 
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -26,8 +27,6 @@ export default function Agendamento() {
     setSelectedItem(item.id);
   };  
 
-  const handleCardPress = () => {
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,9 +55,9 @@ export default function Agendamento() {
       <RatingStars numStars={5} onStarPress={handleStarPress} />
       </View>
       <TouchableOpacity 
-         style={styles.button}
-         onPress={() => handleCardPress()}
-        >
+        style={styles.button}
+        onPress={() => navigation.navigate('Calendario')}
+      >
         <Text style={styles.buttonText}>Agendar</Text>
       </TouchableOpacity>
     </SafeAreaView>   
