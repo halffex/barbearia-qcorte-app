@@ -4,7 +4,7 @@ import Input from '../../components/Input';
 
 
 
-const CadastroUsuario = ({navigation}) => {
+const CadastroBarber = ({navigation}) => {
 
   const [name, setName] = useState(null)
 
@@ -34,14 +34,21 @@ const CadastroUsuario = ({navigation}) => {
 
 
         <Input 
-          placeholder="Nome"
+          placeholder="Nome do responsável"
           autoCapitalize="none"
           onChangeText={value => setName(value)}
           autoCorrect={false}
           keyboardType="default"
         />
         <Input 
-          placeholder="((XX) XXXXX-XXXX)"
+          placeholder="Nome da sua barbearia"
+          autoCapitalize="none"
+          onChangeText={value => setName(value)}
+          autoCorrect={false}
+          keyboardType="default"
+        />
+        <Input 
+          placeholder="Telefone(celular)"
           autoCapitalize="none"
           onChangeText={value => setTelefone(value)}
           autoCorrect={false}
@@ -62,10 +69,18 @@ const CadastroUsuario = ({navigation}) => {
           autoCapitalize="none"
           keyboardType="default"
         />
+        <Input 
+          secureTextEntry 
+          autoCorrect={false}
+          onChangeText={value => setPassword(value)}
+          placeholder="Repita sua senha"
+          autoCapitalize="none"
+          keyboardType="default"
+        />
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => navigation.navigate('CadastroUsuario')}
+          onPress={() => navigation.navigate('CadastroBarber')}
         >
           <Text style={styles.buttonText}>Criar Conta</Text>
         </TouchableOpacity>
@@ -136,4 +151,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CadastroUsuario;
+export default CadastroBarber;
