@@ -3,87 +3,71 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Input from '../../components/Input';
 
 
-
 const CadastroBarber = ({navigation}) => {
 
   const [name, setName] = useState(null)
-
   const [telefone, setTelefone] = useState(null)
-
   const [email, setEmail] = useState(null)
-
   const [password, setPassword] = useState(null)
 
-  const criarconta = () => {
-    console.log("Sucess")
-    navigation.reset({
-      index: 0,
-      routes: [{name: "Login"}]
-    });
-  };
-
   return (
-
     
     <View style = {styles.container}>
       
       <View style={styles.centeredView}>
 
-      <Text style={styles.textoPerfil}>Criar conta</Text>
-
-
-
-        <Input 
-          placeholder="Nome do responsável"
-          autoCapitalize="none"
-          onChangeText={value => setName(value)}
-          autoCorrect={false}
-          keyboardType="default"
-        />
-        <Input 
-          placeholder="Nome da sua barbearia"
-          autoCapitalize="none"
-          onChangeText={value => setName(value)}
-          autoCorrect={false}
-          keyboardType="default"
-        />
-        <Input 
-          placeholder="Telefone(celular)"
-          autoCapitalize="none"
-          onChangeText={value => setTelefone(value)}
-          autoCorrect={false}
-          keyboardType="default"
-        />
-        <Input 
-          placeholder="E-mail"
-          autoCapitalize="none"
-          onChangeText={value => setEmail(value)}
-          autoCorrect={false}
-          keyboardType="email-address"
-        />
-        <Input 
-          secureTextEntry 
-          autoCorrect={false}
-          onChangeText={value => setPassword(value)}
-          placeholder="Senha"
-          autoCapitalize="none"
-          keyboardType="default"
-        />
-        <Input 
-          secureTextEntry 
-          autoCorrect={false}
-          onChangeText={value => setPassword(value)}
-          placeholder="Repita sua senha"
-          autoCapitalize="none"
-          keyboardType="default"
-        />
-
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={() => navigation.navigate('CadastroBarber')}
-        >
-          <Text style={styles.buttonText}>Criar Conta</Text>
-        </TouchableOpacity>
+        <Text style={styles.textoPerfil}>Criar conta</Text>
+          <Input 
+            placeholder="Nome do responsável"
+            autoCapitalize="none"
+            onChangeText={value => setName(value)}
+            autoCorrect={false}
+            keyboardType="default"
+          />
+          <Input 
+            placeholder="Nome da sua barbearia"
+            autoCapitalize="none"
+            onChangeText={value => setName(value)}
+            autoCorrect={false}
+            keyboardType="default"
+          />
+          <Input 
+            placeholder="Telefone(celular)"
+            autoCapitalize="none"
+            onChangeText={value => setTelefone(value)}
+            autoCorrect={false}
+            keyboardType="default"
+          />
+          <Input 
+            placeholder="E-mail"
+            autoCapitalize="none"
+            onChangeText={value => setEmail(value)}
+            autoCorrect={false}
+            keyboardType="email-address"
+          />
+          <Input 
+            secureTextEntry 
+            autoCorrect={false}
+            onChangeText={value => setPassword(value)}
+            placeholder="Senha"
+            autoCapitalize="none"
+            keyboardType="default"
+          />
+          <Input 
+            secureTextEntry 
+            autoCorrect={false}
+            onChangeText={value => setPassword(value)}
+            placeholder="Repita sua senha"
+            autoCapitalize="none"
+            keyboardType="default"
+          />
+  
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={() => navigation.navigate('CadastroBarber')}
+          >
+            <Text style={styles.buttonText}>Criar Conta</Text>
+          </TouchableOpacity>
       </View> 
     </View>
   );
