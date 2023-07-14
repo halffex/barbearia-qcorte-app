@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Input from '../../components/Input';
 
 
-export default function CadastroBarber = ({navigation}) => {
+export default function CadastroBarber({ navigation }) {
 
   const [name, setName] = useState(null)
   const [telefone, setTelefone] = useState(null)
