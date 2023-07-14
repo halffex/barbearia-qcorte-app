@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Input from '../../components/Input';
 
 
-const CadastroBarber = ({navigation}) => {
+export default function CadastroBarber = ({navigation}) => {
 
   const [name, setName] = useState(null)
   const [telefone, setTelefone] = useState(null)
@@ -134,5 +134,3 @@ const styles = StyleSheet.create({
     left: 5,
   },
 });
-
-export default CadastroBarber;
