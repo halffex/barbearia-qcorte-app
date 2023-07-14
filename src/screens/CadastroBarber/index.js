@@ -5,10 +5,10 @@ import Input from '../../components/Input';
 
 export default function CadastroBarber({ navigation }) {
 
-  const [name, setName] = useState(null)
-  const [telefone, setTelefone] = useState(null)
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const [name, setName] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     
