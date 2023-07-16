@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 export default function CadastroUsuarioCliente({ navigation }) {
 
   const [nome, setNome] = useState('');
+  const [nomeBarbearia, setNomeBarbearia] = useState('');
   const [telefone, setTelefone] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -23,10 +24,18 @@ export default function CadastroUsuarioCliente({ navigation }) {
         </View>
 
         <Input 
-          placeholder="Nome"
+          placeholder="Nome do responsável"
           autoCapitalize="none"
           value={nome}
           onChangeText={setNome}
+          autoCorrect={false}
+          keyboardType="default"
+        />
+        <Input 
+          placeholder="Nome da sua barbearia"
+          autoCapitalize="none"
+          value={nomeBarbearia}
+          onChangeText={setNomeBarbearia}
           autoCorrect={false}
           keyboardType="default"
         />
@@ -107,7 +116,7 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 50,
     justifyContent: 'center',
-    top: '70%',
+    top: '50%',
     borderRadius: 5,
   },
   buttonText: {

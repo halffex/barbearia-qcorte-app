@@ -6,6 +6,7 @@ import Login from "../screens/Login";
 import EsqueceuSenha from "../screens/EsqueceuSenha";
 import Cadastro from "../screens/Cadastro";
 import CadastroUsuarioCliente from "../screens/CadastroUsuarioCliente";
+import CadastroUsuarioBarbeiro from "../screens/CadastroUsuarioBarbeiro";
 import Agendamento from "../screens/Agendamento";
 import Calendario from "../screens/Calendario";
 
@@ -33,6 +34,11 @@ export default function StackRoutes() {
       <Stack.Screen 
         name="CadastroUsuarioCliente"
         component={CadastroUsuarioCliente}
+      />
+
+      <Stack.Screen 
+        name="CadastroUsuarioBarbeiro"
+        component={CadastroUsuarioBarbeiro}
       />
 
       <Stack.Screen 
