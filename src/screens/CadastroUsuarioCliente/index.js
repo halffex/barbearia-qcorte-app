@@ -3,18 +3,15 @@ import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-na
 import Input from '../../components/Input';
 
 
-export default function CadastroUsuarioCliente({ navigation }) {
+export default function CadastroUsuarioCliente() {
 
-  const [name, setName] = useState(null)
-
-  const [telefone, setTelefone] = useState(null)
-
-  const [email, setEmail] = useState(null)
-
-  const [password, setPassword] = useState(null)
+  const [nome, setNome] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
 
   return (
-
     
     <SafeAreaView style = {styles.container}>
       
@@ -28,28 +25,32 @@ export default function CadastroUsuarioCliente({ navigation }) {
         <Input 
           placeholder="Nome"
           autoCapitalize="none"
-          onChangeText={value => setName(value)}
+          value={nome}
+          onChangeText={setNome}
           autoCorrect={false}
           keyboardType="default"
         />
         <Input 
           placeholder="(XX) XXXXX-XXXX"
           autoCapitalize="none"
-          onChangeText={value => setTelefone(value)}
+          value={telefone}
+          onChangeText={setTelefone}
           autoCorrect={false}
           keyboardType="default"
         />
         <Input 
           placeholder="E-mail"
           autoCapitalize="none"
-          onChangeText={value => setEmail(value)}
+          value={email}
+          onChangeText={setEmail}
           autoCorrect={false}
           keyboardType="email-address"
         />
         <Input 
           secureTextEntry 
           autoCorrect={false}
-          onChangeText={value => setPassword(value)}
+          value={senha}
+          onChangeText={setSenha}
           placeholder="Senha"
           autoCapitalize="none"
           keyboardType="default"
@@ -57,15 +58,16 @@ export default function CadastroUsuarioCliente({ navigation }) {
         <Input 
           secureTextEntry 
           autoCorrect={false}
-          onChangeText={value => setPassword(value)}
+          value={confirmarSenha}
+          onChangeText={setConfirmarSenha}
           placeholder="Confirmar senha"
           autoCapitalize="none"
           keyboardType="default"
+          // returnKeyType="done"
         />
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => navigation.navigate('CadastroUsuario')}
         >
           <Text style={styles.buttonText}>Criar conta</Text>
         </TouchableOpacity>

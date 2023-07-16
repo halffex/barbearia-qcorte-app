@@ -52,12 +52,14 @@ export default function Cadastro() {
             />
           </TouchableOpacity>
         </View>
+        
         <View style={styles.facaLogin}>
           <Text style={styles.possuiConta}>Já possui uma conta?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.textBold}>Faça login</Text>
           </TouchableOpacity>
         </View>
+
         <TouchableOpacity
           style={[styles.button, !selectedOption && styles.disabledButton]}
           onPress={handleContinue}
