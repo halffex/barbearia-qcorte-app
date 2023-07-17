@@ -21,6 +21,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
     await createUserWithEmailAndPassword(auth, email, senha)
     .then(value => {
       console.log('cadastrado com sucesso! \n' + value.user.uid);
+      navigation.navigate('Login');
     })
     .catch(error => console.log(error));
   };

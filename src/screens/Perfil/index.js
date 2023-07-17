@@ -70,7 +70,7 @@ export default function Perfil({ navigation }) {
     }
   };
 
-  async function logout() {
+  async function handleLogout() {
     await signOut(auth)
     .then(() => {
       console.log('saiu com sucesso!');
@@ -102,7 +102,7 @@ export default function Perfil({ navigation }) {
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => logout()}
+          onPress={() => handleLogout()}
         >
           <Text style={styles.buttonText}>Sair</Text>
         </TouchableOpacity>
