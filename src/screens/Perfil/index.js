@@ -4,8 +4,10 @@ import { StatusBar } from 'expo-status-bar';
 
 import * as ImagePicker from 'expo-image-picker';
 
+import { signOut } from "firebase/auth";
+import { auth } from '../../services/firebaseConnection';
 
-export default function Perfil() {
+export default function Perfil({ navigation }) {
 
   const handleImageUser = () => {
     setShowInitialImage(false);
@@ -68,6 +70,15 @@ export default function Perfil() {
     }
   };
 
+  async function logout() {
+    await signOut(auth)
+    .then(() => {
+      console.log('saiu com sucesso!');
+      navigation.navigate('Login');
+    })
+    .catch(error => console.log(error));
+  };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -87,9 +98,14 @@ export default function Perfil() {
               <Text style={styles.placeholderText}>Clique aqui para mudar de foto</Text>
             )}
           </TouchableOpacity>
-
-          
         </View>
+
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={() => logout()}
+        >
+          <Text style={styles.buttonText}>Sair</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -139,4 +155,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 20,
   },
+  button: {
+    backgroundColor: '#CC6600',
+    width: '85%',
+    height: 50,
+    justifyContent: 'center',
+    top: '120%',
+    borderRadius: 5,
+  },
+  buttonText: {
+    textAlign: 'center',
+    borderRadius: 5,
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 15,
+  }
 });

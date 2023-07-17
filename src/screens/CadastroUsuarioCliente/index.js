@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import Input from '../../components/Input';
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../services/firebaseConnection';
+
+import { collection, addDoc } from "firebase/firestore";
+import { db } from '../../services/firebaseConnection';
+
 
 export default function CadastroUsuarioCliente({ navigation }) {
 
@@ -11,10 +17,17 @@ export default function CadastroUsuarioCliente({ navigation }) {
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
 
+  async function createUser() {
+    await createUserWithEmailAndPassword(auth, email, senha)
+    .then(value => {
+      console.log('cadastrado com sucesso! \n' + value.user.uid);
+    })
+    .catch(error => console.log(error));
+  };
+
   return (
     
     <SafeAreaView style = {styles.container}>
-      
       <View style={styles.centeredView}>
 
         <View style={styles.container2}>
@@ -26,7 +39,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
           placeholder="Nome"
           autoCapitalize="none"
           value={nome}
-          onChangeText={setNome}
+          onChangeText={value => setNome(value)}
           autoCorrect={false}
           keyboardType="default"
         />
@@ -34,7 +47,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
           placeholder="(XX) XXXXX-XXXX"
           autoCapitalize="none"
           value={telefone}
-          onChangeText={setTelefone}
+          onChangeText={value => setTelefone(value)}
           autoCorrect={false}
           keyboardType="default"
         />
@@ -42,7 +55,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
           placeholder="E-mail"
           autoCapitalize="none"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={value => setEmail(value)}
           autoCorrect={false}
           keyboardType="email-address"
         />
@@ -50,7 +63,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
           secureTextEntry 
           autoCorrect={false}
           value={senha}
-          onChangeText={setSenha}
+          onChangeText={value => setSenha(value)}
           placeholder="Senha"
           autoCapitalize="none"
           keyboardType="default"
@@ -59,7 +72,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
           secureTextEntry 
           autoCorrect={false}
           value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
+          onChangeText={value => setConfirmarSenha(value)}
           placeholder="Confirmar senha"
           autoCapitalize="none"
           keyboardType="default"
@@ -68,6 +81,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
 
         <TouchableOpacity 
           style={styles.button}
+          onPress={() => createUser()}
         >
           <Text style={styles.buttonText}>Criar conta</Text>
         </TouchableOpacity>

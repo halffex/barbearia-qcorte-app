@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-// import { firebase } from '@react-native-firebase/auth';
 
 import Input from '../../components/Input';
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../services/firebaseConnection';
 
 export default function Login({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
-      const user = userCredential.user;
-      console.log('Usuário autenticado:', user.uid);
-      // Aqui você pode redirecionar o usuário para a próxima tela do aplicativo após o login bem-sucedido
-    } catch (error) {
-      console.log('Erro de autenticação:', error);
-      // Aqui você pode exibir uma mensagem de erro para o usuário na tela de login
-    }
-  };
-
-  const handleSignup = () => {
-    // Aqui você pode adicionar a lógica para redirecionar o usuário para a tela de cadastro
-    navigation.navigate('Cadastro');
+  async function handleLogin() {
+    await signInWithEmailAndPassword(auth, email, password)
+    .then(value => {
+      console.log('fez login com sucesso!');
+      navigation.navigate('Inicio');
+    })
+    .catch(error => console.log(error));
   };
 
   return (
@@ -40,8 +34,8 @@ export default function Login({ navigation }) {
           iconName={"email"} 
           placeholder="E-mail"
           autoCapitalize="none"
-          onChangeText={setEmail}
           value={email}
+          onChangeText={value => setEmail(value)}
           autoCorrect={false}
           keyboardType="email-address"
         />
@@ -49,8 +43,8 @@ export default function Login({ navigation }) {
           iconName={"key-variant"} 
           secureTextEntry 
           autoCorrect={false}
-          onChangeText={setPassword}
           value={password}
+          onChangeText={value => setPassword(value)}
           placeholder="Senha"
           autoCapitalize="none"
           keyboardType="default"
@@ -64,6 +58,7 @@ export default function Login({ navigation }) {
 
         <TouchableOpacity 
           style={styles.button}
+          onPress={() => handleLogin()}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
@@ -71,8 +66,7 @@ export default function Login({ navigation }) {
         <View style={styles.facaCadastro}>
           <Text style={styles.criarConta}>Não possui conta?</Text>
           <TouchableOpacity 
-            // onPress={() => navigation.navigate('Cadastro')}
-            onPress={handleSignup}
+            onPress={() => navigation.navigate('CadastroUsuarioCliente')}
           >
             <Text style={styles.textBold}>Faça seu cadastro</Text>
           </TouchableOpacity>
