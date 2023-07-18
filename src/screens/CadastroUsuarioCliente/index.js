@@ -17,13 +17,33 @@ export default function CadastroUsuarioCliente({ navigation }) {
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
 
-  async function createUser() {
+  // async function createUser() {
+  //   await createUserWithEmailAndPassword(auth, email, senha)
+  //   .then(value => {
+  //     console.log('cadastrado com sucesso! \n' + value.user.uid);
+  //     navigation.navigate('Login');
+  //   })
+  //   .catch(error => console.log(error));
+  // };
+
+  async function createUserCliente() {
     await createUserWithEmailAndPassword(auth, email, senha)
-    .then(value => {
-      console.log('cadastrado com sucesso! \n' + value.user.uid);
+    .then(async (value) => {
+      const uid = value.user.uid;
+
+      // Salvar nome e telefone no Firestore
+      await addDoc(collection(db, 'clientes'), {
+        nome: nome,
+        telefone: telefone,
+        email: email,
+        senha: senha,
+        uid: uid
+      });
+
+      console.log('Cadastrado com sucesso! \n' + uid);
       navigation.navigate('Login');
     })
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error));
   };
 
   return (
@@ -82,7 +102,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => createUser()}
+          onPress={() => createUserCliente()}
         >
           <Text style={styles.buttonText}>Criar conta</Text>
         </TouchableOpacity>

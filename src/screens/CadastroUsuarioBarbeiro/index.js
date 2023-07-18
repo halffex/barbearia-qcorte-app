@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import Input from '../../components/Input';
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../services/firebaseConnection';
+
+import { collection, addDoc } from "firebase/firestore";
+import { db } from '../../services/firebaseConnection';
 
 export default function CadastroUsuarioCliente({ navigation }) {
 
@@ -11,6 +16,26 @@ export default function CadastroUsuarioCliente({ navigation }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+
+  async function createUserBarber() {
+    await createUserWithEmailAndPassword(auth, email, senha)
+    .then(async (value) => {
+      const uid = value.user.uid;
+
+      // Salvar nome e telefone no Firestore
+      await addDoc(collection(db, 'barbeiros'), {
+        nome: nome,
+        telefone: telefone,
+        email: email,
+        senha: senha,
+        uid: uid
+      });
+
+      console.log('Cadastrado com sucesso! \n' + uid);
+      navigation.navigate('Login');
+    })
+    .catch((error) => console.log(error));
+  };
 
   return (
     
@@ -77,6 +102,7 @@ export default function CadastroUsuarioCliente({ navigation }) {
 
         <TouchableOpacity 
           style={styles.button}
+          onPress={() => createUserBarber()}
         >
           <Text style={styles.buttonText}>Criar conta</Text>
         </TouchableOpacity>
