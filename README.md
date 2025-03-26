@@ -1,6 +1,5 @@
 # Projeto Barbearia Qcorte App
 Projeto desenvolvido na disciplina de Dispositivos Móveis. Possui apenas a parte visual e algumas telas, sem funcionalidades completas. Utiliza Firebase para cadastro e login de usuários, armazenando dados no Firestore. Não possui backend implementado.
-Projeto desenvolvido com Expo para criação de aplicativos React Native.
 
 ## Iniciando projeto
 Antes de tudo, instale as dependências, digite o comando:
