@@ -19,4 +19,3 @@ Foi utilizado JavaScript no desenvolvimento do projeto.
 - React Native
 - Expo
 - React Navigation
-- Axios
